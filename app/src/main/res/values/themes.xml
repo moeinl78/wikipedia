@@ -12,10 +12,21 @@
         <item name="colorSecondaryVariant">@color/black_200</item>
         <item name="colorOnSecondary">@color/blue</item>
         <item name="colorOnSurface">@color/blue</item>
+
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimary</item>
+        <item name="android:windowLightStatusBar" tools:targetApi="23">true</item>
 
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/league_spartan_regular</item>
+        <item name="android:fontFamily">@font/league_spartan_regular</item>
     </style>
+
+    <style name="ToolbarWikipedia" parent="Theme.MaterialComponents">
+
+        <!-- Customize your theme here. -->
+        <item name="fontFamily">@font/cormorant_semibold</item>
+        <item name="android:fontFamily">@font/cormorant_semibold</item>
+    </style>
+
 </resources>

@@ -17,5 +17,6 @@
 
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/league_spartan_regular</item>
+        <item name="android:fontFamily">@font/league_spartan_regular</item>
     </style>
 </resources>
