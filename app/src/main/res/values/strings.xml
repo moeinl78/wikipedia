@@ -1,4 +1,11 @@
 <resources>
     <string name="app_name">wikipedia</string>
     <string name="toolbar_title">WikipediA</string>
+    <string name="define">is a free online encyclopedia</string>
+    <string name="writer">Be a writer</string>
+    <string name="login">Login</string>
+    <string name="wikibooks">Wikibooks</string>
+    <string name="other_products">Other products</string>
+    <string name="wikinews">WikiNews</string>
+    <string name="wikidata">Wikidata</string>
 </resources>
