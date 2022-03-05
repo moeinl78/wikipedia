@@ -46,8 +46,8 @@
             android:layout_width="match_parent"
             android:layout_height="56dp"
             app:menu="@menu/menu_bottom_navigation"
-            app:itemIconTint="@color/black_200"
-            app:itemTextColor="@color/black_200"
+            app:itemIconTint="@color/bottom_navigation_color"
+            app:itemTextColor="@color/bottom_navigation_color"
         />
 
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
