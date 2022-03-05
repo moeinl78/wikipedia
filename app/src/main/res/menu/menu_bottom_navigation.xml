@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+
+    <item
+        android:id="@+id/bottomNavigationExplore"
+        android:title="@string/explore"
+        android:icon="@drawable/ic_baseline_explore_24"
+        app:iconTint="@color/black_200"
+        />
+
+    <item
+        android:id="@+id/bottomNavigationTrend"
+        android:title="@string/trend"
+        android:icon="@drawable/ic_baseline_trending_up_24"
+        app:iconTint="@color/black_200"
+        />
+
+    <item
+        android:id="@+id/bottomNavigationSaved"
+        android:title="@string/saved"
+        android:icon="@drawable/ic_baseline_bookmark_24"
+        app:iconTint="@color/black_200"
+        />
+
+    <item
+        android:id="@+id/bottomNavigationSearch"
+        android:title="@string/search"
+        android:icon="@drawable/ic_baseline_search_24"
+        app:iconTint="@color/black_200"
+        />
+
+    <item
+        android:id="@+id/bottomNavigationProfile"
+        android:title="@string/profile"
+        android:icon="@drawable/ic_baseline_person_24"
+        app:iconTint="@color/black_200"
+        />
+
+</menu>

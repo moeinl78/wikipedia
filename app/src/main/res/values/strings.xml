@@ -10,4 +10,10 @@
     <string name="wikidata">Wikidata</string>
     <string name="closeMenu">close menu</string>
     <string name="startMenu">start menu</string>
+    <string name="explore">Explore</string>
+    <string name="trend">Trend</string>
+    <string name="saved">Saved</string>
+    <string name="search">Search</string>
+    <string name="edits">Edits</string>
+    <string name="profile">Profile</string>
 </resources>

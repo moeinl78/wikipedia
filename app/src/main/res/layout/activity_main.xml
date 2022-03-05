@@ -41,6 +41,15 @@
 
         </com.google.android.material.appbar.AppBarLayout>
 
+        <com.google.android.material.bottomnavigation.BottomNavigationView
+            android:layout_gravity="bottom"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            app:menu="@menu/menu_bottom_navigation"
+            app:itemIconTint="@color/black_200"
+            app:itemTextColor="@color/black_200"
+        />
+
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.google.android.material.navigation.NavigationView
