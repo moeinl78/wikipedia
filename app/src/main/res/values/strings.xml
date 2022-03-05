@@ -8,4 +8,6 @@
     <string name="other_products">Other products</string>
     <string name="wikinews">WikiNews</string>
     <string name="wikidata">Wikidata</string>
+    <string name="closeMenu">close menu</string>
+    <string name="startMenu">start menu</string>
 </resources>

@@ -20,10 +20,10 @@
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/league_spartan_regular</item>
         <item name="android:fontFamily">@font/league_spartan_regular</item>
+
     </style>
 
     <style name="ToolbarWikipedia" parent="Theme.MaterialComponents">
-
         <!-- Customize your theme here. -->
         <item name="fontFamily">@font/cormorant_semibold</item>
         <item name="android:fontFamily">@font/cormorant_semibold</item>
