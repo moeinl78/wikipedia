@@ -1,5 +1,6 @@
 package ir.ariyana.wikipedia.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -12,18 +13,18 @@ class AdapterTrend(private val data : ArrayList<Explore>) : RecyclerView.Adapter
 
     inner class ViewHolder(private val binding : ItemCardTrendViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bindData(position : Int) {
 
             if(data[position].isTrend) {
 
-                binding.explorePostTitle.text = data[position].postTitle
-                binding.explorePostSubtitle.text = data[position].postSubtitle
-                binding.explorePostContent.text = data[position].postContent
-                binding.explorePostInsight.text = data[position].inSight
+                binding.trendTitleView.text = data[position].postTitle
+                binding.trendSubtitleView.text = data[position].postSubtitle
+                binding.trendInsight.text = data[position].inSight
                 Glide
                     .with(binding.root.context)
                     .load(data[position].postImage)
-                    .into(binding.explorePostImageView)
+                    .into(binding.trendImageView)
             }
         }
     }
