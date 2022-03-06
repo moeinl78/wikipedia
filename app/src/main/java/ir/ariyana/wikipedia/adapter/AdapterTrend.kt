@@ -18,6 +18,7 @@ class AdapterTrend(private val data : ArrayList<Explore>) : RecyclerView.Adapter
 
             if(data[position].isTrend) {
 
+                binding.trendPostId.text = (adapterPosition + 1).toString()
                 binding.trendTitleView.text = data[position].postTitle
                 binding.trendSubtitleView.text = data[position].postSubtitle
                 binding.trendInsight.text = data[position].inSight
