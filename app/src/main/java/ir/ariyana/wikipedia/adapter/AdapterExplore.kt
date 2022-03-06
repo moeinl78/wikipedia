@@ -1,5 +1,6 @@
 package ir.ariyana.wikipedia.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -11,10 +12,11 @@ class AdapterExplore(private val data : ArrayList<Explore>) : RecyclerView.Adapt
 
     inner class ViewHolder(private val binding : ItemCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
+        @SuppressLint("SetTextI18n")
         fun bindData(position : Int) {
             binding.explorePostTitle.text = data[position].postTitle
             binding.explorePostSubtitle.text = data[position].postSubtitle
-            binding.explorePostContent.text = data[position].postContent
+            binding.explorePostContent.text = data[position].postContent.substring(0, 99) + "..."
             Glide
                 .with(binding.root.context)
                 .load(data[position].postImage)

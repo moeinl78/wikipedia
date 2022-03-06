@@ -69,7 +69,7 @@
         app:headerLayout="@layout/header_main"
         app:menu="@menu/menu_navigation"
         app:itemIconTint="@color/black_200"
-        app:itemIconSize="13sp"
+        app:itemIconSize="15sp"
         />
 
 </androidx.drawerlayout.widget.DrawerLayout>
