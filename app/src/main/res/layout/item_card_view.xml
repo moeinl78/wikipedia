@@ -29,7 +29,7 @@
             android:id="@+id/explorePostImageView"
             android:layout_width="match_parent"
             android:layout_height="256dp"
-            android:scaleType="fitXY"
+            android:scaleType="centerCrop"
             tools:srcCompat="@tools:sample/avatars"
             />
 
@@ -57,12 +57,11 @@
             />
 
         <View
-            android:layout_width="match_parent"
+            android:layout_width="96dp"
             android:layout_height="0.5dp"
             android:layout_marginStart="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
-            android:layout_marginEnd="256dp"
             android:alpha="0.5"
             android:background="@color/black_100"
             />

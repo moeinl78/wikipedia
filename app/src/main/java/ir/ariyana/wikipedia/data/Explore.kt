@@ -5,5 +5,7 @@ data class Explore(
     val postTitle : String,
     val postSubtitle : String,
     val postContent : String,
-    val postDetail : String
+    val postDetail : String,
+    val isTrend : Boolean,
+    val inSight : String,
 )
