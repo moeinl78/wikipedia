@@ -68,6 +68,9 @@ class MainActivity : AppCompatActivity() {
 
         onRun()
 
+        binding.activityMainBottomNavigation.getOrCreateBadge(R.id.bottomNavigationExplore).isVisible = true
+        binding.activityMainBottomNavigation.getOrCreateBadge(R.id.bottomNavigationTrend).isVisible = true
+
         // add listener for items in bottom navigation and adjust transactions for fragments
         binding.activityMainBottomNavigation.setOnItemSelectedListener {
 
