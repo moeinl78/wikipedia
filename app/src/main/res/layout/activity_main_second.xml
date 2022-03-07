@@ -8,13 +8,13 @@
     >
 
     <com.google.android.material.appbar.AppBarLayout
-        android:id="@+id/fragmentInfoAppbarLayout"
+        android:id="@+id/mainSecondAppbarLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         >
 
         <com.google.android.material.appbar.CollapsingToolbarLayout
-            android:id="@+id/fragmentInfoCollapsingToolbar"
+            android:id="@+id/mainSecondCollapsingToolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ToolbarWikipedia"
@@ -24,7 +24,7 @@
             >
 
             <ImageView
-                android:id="@+id/fragmentInfoHeaderImage"
+                android:id="@+id/mainSecondHeaderImage"
                 android:layout_width="match_parent"
                 android:layout_height="192dp"
                 android:src="@drawable/background"
@@ -33,7 +33,7 @@
                 />
 
             <androidx.appcompat.widget.Toolbar
-                android:id="@+id/fragmentInfoToolBar"
+                android:id="@+id/mainSecondToolBar"
                 android:layout_width="match_parent"
                 android:layout_height="56dp"
                 app:layout_collapseMode="pin"
@@ -44,14 +44,14 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.core.widget.NestedScrollView
-        android:id="@+id/fragmentInfoNestedScroll"
+        android:id="@+id/mainSecondNestedScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
         >
 
         <LinearLayout
-            android:id="@+id/fragmentInfoNestedLinearLayout"
+            android:id="@+id/mainSecondNestedLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
@@ -59,7 +59,7 @@
             >
 
             <TextView
-                android:id="@+id/fragmentInfoTitle"
+                android:id="@+id/mainSecondTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/red_dead"
@@ -69,7 +69,7 @@
                 />
 
             <TextView
-                android:id="@+id/fragmentInfoSubtitle"
+                android:id="@+id/mainSecondSubtitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/video_game"
@@ -79,7 +79,7 @@
                 />
 
             <TextView
-                android:id="@+id/fragmentInfoContent"
+                android:id="@+id/mainSecondContent"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/content_info"
@@ -93,7 +93,7 @@
     </androidx.core.widget.NestedScrollView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/fragmentInfoFAB"
+        android:id="@+id/mainSecondFAB"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:contentDescription="@string/open_link"

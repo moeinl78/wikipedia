@@ -1,6 +1,7 @@
 package ir.ariyana.wikipedia.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -8,7 +9,7 @@ import com.bumptech.glide.Glide
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.ItemCardViewBinding
 
-class AdapterExplore(private val data : ArrayList<Explore>) : RecyclerView.Adapter<AdapterExplore.ViewHolder>() {
+class AdapterExplore(private val data: ArrayList<Explore>, private val dataEvent: DataEvent) : RecyclerView.Adapter<AdapterExplore.ViewHolder>() {
 
     inner class ViewHolder(private val binding : ItemCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -21,6 +22,10 @@ class AdapterExplore(private val data : ArrayList<Explore>) : RecyclerView.Adapt
                 .with(binding.root.context)
                 .load(data[position].postImage)
                 .into(binding.explorePostImageView)
+
+            itemView.setOnClickListener {
+                dataEvent.onPostClicked()
+            }
         }
     }
 
@@ -35,5 +40,9 @@ class AdapterExplore(private val data : ArrayList<Explore>) : RecyclerView.Adapt
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    interface DataEvent {
+        fun onPostClicked()
     }
 }
