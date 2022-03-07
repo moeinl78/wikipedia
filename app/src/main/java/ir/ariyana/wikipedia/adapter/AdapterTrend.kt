@@ -8,8 +8,9 @@ import com.bumptech.glide.Glide
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.ItemCardTrendViewBinding
 import ir.ariyana.wikipedia.databinding.ItemCardViewBinding
+import ir.ariyana.wikipedia.interf.DataEvent
 
-class AdapterTrend(private val data : ArrayList<Explore>) : RecyclerView.Adapter<AdapterTrend.ViewHolder>() {
+class AdapterTrend(private val data : ArrayList<Explore>, val dataEvent: DataEvent) : RecyclerView.Adapter<AdapterTrend.ViewHolder>() {
 
     inner class ViewHolder(private val binding : ItemCardTrendViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -26,6 +27,10 @@ class AdapterTrend(private val data : ArrayList<Explore>) : RecyclerView.Adapter
                     .with(binding.root.context)
                     .load(data[position].postImage)
                     .into(binding.trendImageView)
+
+                itemView.setOnClickListener {
+                    dataEvent.onPostClicked(data[adapterPosition])
+                }
             }
         }
     }

@@ -8,8 +8,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.ItemCardViewBinding
+import ir.ariyana.wikipedia.interf.DataEvent
 
-class AdapterExplore(private val data: ArrayList<Explore>, private val dataEvent: DataEvent) : RecyclerView.Adapter<AdapterExplore.ViewHolder>() {
+class AdapterExplore(private val data: ArrayList<Explore>, val dataEvent: DataEvent) : RecyclerView.Adapter<AdapterExplore.ViewHolder>() {
 
     inner class ViewHolder(private val binding : ItemCardViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -24,7 +25,7 @@ class AdapterExplore(private val data: ArrayList<Explore>, private val dataEvent
                 .into(binding.explorePostImageView)
 
             itemView.setOnClickListener {
-                dataEvent.onPostClicked()
+                dataEvent.onPostClicked(data[adapterPosition])
             }
         }
     }
@@ -40,9 +41,5 @@ class AdapterExplore(private val data: ArrayList<Explore>, private val dataEvent
 
     override fun getItemCount(): Int {
         return data.size
-    }
-
-    interface DataEvent {
-        fun onPostClicked()
     }
 }

@@ -101,7 +101,7 @@
         app:tint="@color/white"
         app:backgroundTint="@color/blue"
         app:useCompatPadding="true"
-        app:layout_anchor="@id/fragmentInfoAppbarLayout"
+        app:layout_anchor="@id/mainSecondAppbarLayout"
         app:layout_anchorGravity="bottom|end"
         />
 
