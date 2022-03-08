@@ -21,7 +21,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
         // add hamburger menu to toggle navigation view
         val actionBarDrawerToggle = ActionBarDrawerToggle(
             this,
