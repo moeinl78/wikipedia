@@ -1,5 +1,6 @@
 package ir.ariyana.wikipedia.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +8,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ir.ariyana.wikipedia.MainSecondActivity
 import ir.ariyana.wikipedia.adapter.AdapterTrend
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.FragmentTrendBinding
@@ -59,6 +61,8 @@ class FragmentTrend : Fragment(), DataEvent {
     }
 
     override fun onPostClicked(post: Explore) {
-        TODO("Not yet implemented")
+        val intent = Intent(activity, MainSecondActivity::class.java)
+        intent.putExtra(POST_DATA, post)
+        startActivity(intent)
     }
 }
