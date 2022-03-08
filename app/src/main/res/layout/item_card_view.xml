@@ -33,16 +33,37 @@
             tools:srcCompat="@tools:sample/avatars"
             />
 
-        <TextView
-            android:id="@+id/explorePostTitle"
-            android:layout_width="wrap_content"
+        <FrameLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/red_dead"
-            android:textColor="@color/black_200"
-            android:textSize="24sp"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="4dp"
-            />
+            android:orientation="horizontal"
+            android:layout_marginTop="8dp"
+            >
+
+            <TextView
+                android:id="@+id/savedPostTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/red_dead"
+                android:textColor="@color/black_200"
+                android:textSize="24sp"
+                android:layout_marginStart="16dp"
+                android:layout_gravity="start|center_vertical"
+                />
+
+            <ImageView
+                android:id="@+id/savedDropDownMenu"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_marginEnd="8dp"
+                android:layout_gravity="end|center_vertical"
+                android:clickable="true"
+                android:focusable="true"
+                android:src="@drawable/ic_baseline_bookmark_border_24"
+                app:tint="@color/black_200"
+                />
+
+        </FrameLayout>
 
         <TextView
             android:id="@+id/explorePostSubtitle"
