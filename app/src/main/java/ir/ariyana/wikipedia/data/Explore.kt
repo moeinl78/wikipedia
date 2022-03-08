@@ -1,5 +1,9 @@
 package ir.ariyana.wikipedia.data
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 data class Explore(
     val postImage : String,
     val postTitle : String,
@@ -8,4 +12,4 @@ data class Explore(
     val postDetail : String,
     val isTrend : Boolean,
     val inSight : String,
-)
+) : Parcelable

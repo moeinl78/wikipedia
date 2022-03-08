@@ -10,8 +10,9 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.ariyana.wikipedia.adapter.AdapterTrend
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.FragmentTrendBinding
+import ir.ariyana.wikipedia.interf.DataEvent
 
-class FragmentTrend : Fragment() {
+class FragmentTrend : Fragment(), DataEvent {
 
     lateinit var binding : FragmentTrendBinding
     override fun onCreateView(
@@ -52,8 +53,12 @@ class FragmentTrend : Fragment() {
             }
         }
 
-        val adapter = AdapterTrend(dataSet)
+        val adapter = AdapterTrend(dataSet, this)
         binding.fragmentTrendRecyclerView.adapter = adapter
         binding.fragmentTrendRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+    }
+
+    override fun onPostClicked(post: Explore) {
+        TODO("Not yet implemented")
     }
 }

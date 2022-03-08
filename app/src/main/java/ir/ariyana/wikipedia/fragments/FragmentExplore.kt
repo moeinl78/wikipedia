@@ -1,5 +1,6 @@
 package ir.ariyana.wikipedia.fragments
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -7,11 +8,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import ir.ariyana.wikipedia.MainSecondActivity
 import ir.ariyana.wikipedia.adapter.AdapterExplore
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.FragmentExploreBinding
+import ir.ariyana.wikipedia.interf.DataEvent
 
-class FragmentExplore : Fragment() {
+const val POST_DATA = "post_data"
+
+class FragmentExplore : Fragment(), DataEvent {
 
     lateinit var binding : FragmentExploreBinding
     override fun onCreateView(
@@ -42,8 +47,14 @@ class FragmentExplore : Fragment() {
                     "\n" +
                     "Following its announcement in November 2013, A Thief's End was widely anticipated. The game was acclaimed by critics, praising its gameplay, narrative, emotional depth, visuals, and multiplayer. Several reviewers found the game a worthy conclusion to Nathan's story. It won several year-end accolades, including Game of the Year awards from several gaming publications, critics, and game award ceremonies. With over 15 million copies sold, it is the highest-selling Uncharted game and one of the best-selling PlayStation 4 games. A standalone expansion, Uncharted: The Lost Legacy, was released in 2017. A remastered version, alongside The Lost Legacy as part of the Uncharted: Legacy of Thieves Collection, was released in January 2022 for PlayStation 5, and will be released later in 2022 for Microsoft Windows.", false, "-"),
         )
-        val adapter = AdapterExplore(data)
+        val adapter = AdapterExplore(data, this)
         binding.fragmentExploreRecyclerView.adapter = adapter
         binding.fragmentExploreRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+    }
+
+    override fun onPostClicked(post: Explore) {
+        val intent = Intent(activity, MainSecondActivity::class.java)
+        intent.putExtra(POST_DATA, post)
+        startActivity(intent)
     }
 }
