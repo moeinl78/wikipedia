@@ -24,6 +24,10 @@ class AdapterSave(private val data : ArrayList<Explore>, private val dataEvent: 
                 .with(binding.root.context)
                 .load(data[position].postImage)
                 .into(binding.savedPostImageView)
+
+            itemView.setOnClickListener {
+                dataEvent.onPostClicked(data[adapterPosition])
+            }
         }
     }
 
