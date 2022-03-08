@@ -6,9 +6,11 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.ContextCompat
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import cn.pedant.SweetAlert.SweetAlertDialog
+import com.google.android.material.snackbar.Snackbar
 import ir.ariyana.wikipedia.databinding.ActivityMainBinding
 import ir.ariyana.wikipedia.fragments.*
 
@@ -49,7 +51,14 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.login_item -> {
-                    Toast.makeText(this, "Login", Toast.LENGTH_SHORT).show()
+                    Snackbar.make(binding.root, "This feature is not available yet!", Snackbar.LENGTH_SHORT)
+                        .setAction("Retry"){
+                            Toast.makeText(this, "OK", Toast.LENGTH_SHORT).show()
+                        }
+                        .setBackgroundTint(ContextCompat.getColor(this, R.color.blue))
+                        .setTextColor(ContextCompat.getColor(this, R.color.white))
+                        .show()
+
                     binding.activityMainDrawer.closeDrawer(GravityCompat.START)
                 }
 

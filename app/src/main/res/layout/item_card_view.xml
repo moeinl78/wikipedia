@@ -41,7 +41,7 @@
             >
 
             <TextView
-                android:id="@+id/savedPostTitle"
+                android:id="@+id/explorePostTitle"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="@string/red_dead"
@@ -52,7 +52,7 @@
                 />
 
             <ImageView
-                android:id="@+id/savedDropDownMenu"
+                android:id="@+id/explorePostBookmark"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
                 android:layout_marginEnd="8dp"
