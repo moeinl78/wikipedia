@@ -65,7 +65,7 @@ class MainActivity : AppCompatActivity() {
                     .setCancelClickListener {
                         alert.dismiss()
                     }
-                    alert.dismiss()
+                    alert.show()
                     binding.activityMainDrawer.closeDrawer(GravityCompat.START)
                 }
 
