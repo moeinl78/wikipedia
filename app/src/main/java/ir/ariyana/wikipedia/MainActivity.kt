@@ -1,5 +1,8 @@
 package ir.ariyana.wikipedia
 
+import android.app.Activity
+import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
@@ -100,6 +103,8 @@ class MainActivity : AppCompatActivity() {
 
         // do this to stop loading the same fragment
         binding.activityMainBottomNavigation.setOnItemReselectedListener {}
+
+        openURL()
     }
 
     private fun startTransaction(containerViewId : Int, fragment : Fragment) {
@@ -111,5 +116,22 @@ class MainActivity : AppCompatActivity() {
     private fun onRun() {
         startTransaction(R.id.activityMainFrameLayout, FragmentExplore())
         binding.activityMainBottomNavigation.selectedItemId = R.id.bottomNavigationExplore
+    }
+
+    private fun openURL() {
+        val menuNav = binding.activityMainBottomNavigation
+        menuNav.menu.findItem(R.id.wikinews_item).setOnMenuItemClickListener {
+            val url = "https://en.wikinews.org/wiki/Main_Page"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+            true
+        }
+
+        menuNav.menu.findItem(R.id.wikidata_item).setOnMenuItemClickListener {
+            val url = "https://www.wikidata.org/wiki/Wikidata:Main_Page"
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+            startActivity(intent)
+            true
+        }
     }
 }
