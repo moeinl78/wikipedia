@@ -1,6 +1,5 @@
 package ir.ariyana.wikipedia
 
-import android.app.Activity
 import android.content.Intent
 import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
@@ -9,6 +8,7 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
+import cn.pedant.SweetAlert.SweetAlertDialog
 import ir.ariyana.wikipedia.databinding.ActivityMainBinding
 import ir.ariyana.wikipedia.fragments.*
 
@@ -42,7 +42,9 @@ class MainActivity : AppCompatActivity() {
         binding.activityMainNavigationView.setNavigationItemSelectedListener {
             when(it.itemId) {
                 R.id.wikibooks_item -> {
-                    Toast.makeText(this, "wikibooks", Toast.LENGTH_SHORT).show()
+                    val url = Uri.parse("https://www.wikibooks.org/")
+                    val intent = Intent(Intent.ACTION_VIEW, url)
+                    startActivity(intent)
                     binding.activityMainDrawer.closeDrawer(GravityCompat.START)
                 }
 
@@ -52,17 +54,32 @@ class MainActivity : AppCompatActivity() {
                 }
 
                 R.id.writer_item -> {
-                    Toast.makeText(this, "Writer Item", Toast.LENGTH_SHORT).show()
+                    val alert = SweetAlertDialog(this, SweetAlertDialog.SUCCESS_TYPE)
+                    alert.titleText = "ALERT"
+                    alert.contentText = "Want to become a writer?"
+                    alert.confirmText = "CONFIRM"
+                    alert.cancelText = "CANCEL"
+                    alert.setConfirmClickListener {
+                        alert.dismiss()
+                    }
+                    .setCancelClickListener {
+                        alert.dismiss()
+                    }
+                    alert.dismiss()
                     binding.activityMainDrawer.closeDrawer(GravityCompat.START)
                 }
 
                 R.id.wikidata_item -> {
-                    Toast.makeText(this, "wikidata", Toast.LENGTH_SHORT).show()
+                    val url = Uri.parse("https://www.wikidata.org/wiki/Wikidata:Main_Page")
+                    val intent = Intent(Intent.ACTION_VIEW, url)
+                    startActivity(intent)
                     binding.activityMainDrawer.closeDrawer(GravityCompat.START)
                 }
 
                 R.id.wikinews_item -> {
-                    Toast.makeText(this, "wikinews", Toast.LENGTH_SHORT).show()
+                    val url = Uri.parse("https://en.wikinews.org/wiki/Main_Page")
+                    val intent = Intent(Intent.ACTION_VIEW, url)
+                    startActivity(intent)
                     binding.activityMainDrawer.closeDrawer(GravityCompat.START)
                 }
             }
@@ -103,8 +120,6 @@ class MainActivity : AppCompatActivity() {
 
         // do this to stop loading the same fragment
         binding.activityMainBottomNavigation.setOnItemReselectedListener {}
-
-        openURL()
     }
 
     private fun startTransaction(containerViewId : Int, fragment : Fragment) {
@@ -116,22 +131,5 @@ class MainActivity : AppCompatActivity() {
     private fun onRun() {
         startTransaction(R.id.activityMainFrameLayout, FragmentExplore())
         binding.activityMainBottomNavigation.selectedItemId = R.id.bottomNavigationExplore
-    }
-
-    private fun openURL() {
-        val menuNav = binding.activityMainBottomNavigation
-        menuNav.menu.findItem(R.id.wikinews_item).setOnMenuItemClickListener {
-            val url = "https://en.wikinews.org/wiki/Main_Page"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
-            true
-        }
-
-        menuNav.menu.findItem(R.id.wikidata_item).setOnMenuItemClickListener {
-            val url = "https://www.wikidata.org/wiki/Wikidata:Main_Page"
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-            startActivity(intent)
-            true
-        }
     }
 }
