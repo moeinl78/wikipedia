@@ -6,8 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.ItemCardSearchViewBinding
+import ir.ariyana.wikipedia.interf.DataEvent
 
-class AdapterSearch(private val data : ArrayList<Explore>) : RecyclerView.Adapter<AdapterSearch.ViewHolder>() {
+class AdapterSearch(private val data : ArrayList<Explore>, private val dataEvent : DataEvent) : RecyclerView.Adapter<AdapterSearch.ViewHolder>() {
 
     inner class ViewHolder(private val binding : ItemCardSearchViewBinding) : RecyclerView.ViewHolder(binding.root) {
 
@@ -20,6 +21,10 @@ class AdapterSearch(private val data : ArrayList<Explore>) : RecyclerView.Adapte
                 .with(binding.root.context)
                 .load(data[position].postImage)
                 .into(binding.searchPostImageView)
+
+            itemView.setOnClickListener {
+                dataEvent.onPostClicked(data[adapterPosition])
+            }
         }
     }
 

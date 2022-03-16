@@ -14,7 +14,7 @@ data class Explore(
     val postSubtitle : String,
     val postContent : String,
     val postDetail : String,
-    val isTrend : Boolean,
-    val inSight : String,
-    val isSaved : Boolean,
+    var isTrend : Boolean,
+    var inSight : String,
+    var isSaved : Boolean,
 ) : Parcelable

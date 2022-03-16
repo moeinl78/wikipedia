@@ -62,6 +62,10 @@ class FragmentSaved : Fragment(), DataEvent {
         startActivity(intent)
     }
 
+    override fun onBookMarkClicked(post: Explore) {
+        TODO("Not yet implemented")
+    }
+
     private fun showMenu(v : View, @MenuRes menuRes : Int) {
         val popup = PopupMenu(view?.context, v)
         popup.menuInflater.inflate(menuRes, popup.menu)

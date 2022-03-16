@@ -27,6 +27,10 @@ class AdapterExplore(private val data: ArrayList<Explore>, val dataEvent: DataEv
             itemView.setOnClickListener {
                 dataEvent.onPostClicked(data[adapterPosition])
             }
+
+            binding.explorePostBookmark.setOnClickListener {
+                dataEvent.onBookMarkClicked(data[adapterPosition])
+            }
         }
     }
 
@@ -41,5 +45,11 @@ class AdapterExplore(private val data: ArrayList<Explore>, val dataEvent: DataEv
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    fun setData(posts : ArrayList<Explore>) {
+        data.clear()
+        data.addAll(posts)
+        notifyDataSetChanged()
     }
 }

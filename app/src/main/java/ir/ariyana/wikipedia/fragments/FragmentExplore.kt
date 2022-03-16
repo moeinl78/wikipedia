@@ -46,7 +46,6 @@ class FragmentExplore : Fragment(), DataEvent {
                     .apply()
             }
         }
-
         receiveDBItems()
     }
 
@@ -107,5 +106,16 @@ class FragmentExplore : Fragment(), DataEvent {
         val intent = Intent(activity, MainSecondActivity::class.java)
         intent.putExtra(POST_DATA, post)
         startActivity(intent)
+    }
+
+    override fun onBookMarkClicked(post: Explore) {
+        // receive right item from database
+        val postDB = exploreDAO.receivePost(post.id!!)
+        postDB.isSaved = !postDB.isSaved
+        exploreDAO.updatePost(postDB)
+
+        // restart dataset to show saved items
+        val dataSet = ArrayList(exploreDAO.receivePosts())
+        adapter.setData(dataSet)
     }
 }

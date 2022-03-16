@@ -51,4 +51,8 @@ class FragmentTrend : Fragment(), DataEvent {
         intent.putExtra(POST_DATA, post)
         startActivity(intent)
     }
+
+    override fun onBookMarkClicked(post: Explore) {
+        TODO("Not yet implemented")
+    }
 }

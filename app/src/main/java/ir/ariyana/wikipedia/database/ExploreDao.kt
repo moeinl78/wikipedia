@@ -22,4 +22,7 @@ interface ExploreDao : BaseDao {
 
     @Query("SELECT * FROM posts")
     fun receivePosts() : List<Explore>
+
+    @Query("SELECT * FROM posts WHERE id=:num")
+    fun receivePost(num : Int) : Explore
 }
