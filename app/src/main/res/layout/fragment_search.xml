@@ -16,6 +16,7 @@
         android:layout_margin="8dp"
         app:startIconTint="@color/black_200"
         app:startIconDrawable="@drawable/ic_baseline_search_24"
+        app:hintTextColor="@color/black_200"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"

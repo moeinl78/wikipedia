@@ -22,7 +22,7 @@ class AdapterTrend(private val data : ArrayList<Explore>, val dataEvent: DataEve
                 binding.trendPostId.text = (adapterPosition + 1).toString()
                 binding.trendTitleView.text = data[position].postTitle
                 binding.trendSubtitleView.text = data[position].postSubtitle
-                binding.trendInsight.text = data[position].inSight
+                binding.trendInsight.text = data[position].inSight + "K"
                 Glide
                     .with(binding.root.context)
                     .load(data[position].postImage)

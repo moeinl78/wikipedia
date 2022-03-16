@@ -1,10 +1,15 @@
 package ir.ariyana.wikipedia.adapter
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.PopupMenu
+import androidx.annotation.MenuRes
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import ir.ariyana.wikipedia.R
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.databinding.FragmentSavedBinding
 import ir.ariyana.wikipedia.databinding.ItemCardSavedViewBinding
@@ -28,6 +33,10 @@ class AdapterSave(private val data : ArrayList<Explore>, private val dataEvent: 
             itemView.setOnClickListener {
                 dataEvent.onPostClicked(data[adapterPosition])
             }
+
+            binding.savedDropDownMenu.setOnClickListener { v ->
+                showMenu(v, R.menu.menu_main, binding.root.context)
+            }
         }
     }
 
@@ -42,5 +51,11 @@ class AdapterSave(private val data : ArrayList<Explore>, private val dataEvent: 
 
     override fun getItemCount(): Int {
         return data.size
+    }
+
+    private fun showMenu(v : View, @MenuRes menuRes : Int, context : Context) {
+        val popup = PopupMenu(context, v)
+        popup.menuInflater.inflate(menuRes, popup.menu)
+        popup.show()
     }
 }

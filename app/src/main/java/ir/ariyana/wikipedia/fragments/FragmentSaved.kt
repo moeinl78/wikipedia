@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.PopupMenu
+import android.widget.Toast
 import androidx.annotation.MenuRes
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -48,11 +49,6 @@ class FragmentSaved : Fragment(), DataEvent {
         val adapter = AdapterSave(dataSet, this)
         binding.saveFragmentRecyclerView.adapter = adapter
         binding.saveFragmentRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
-
-        val button = ItemCardSavedViewBinding.inflate(layoutInflater).savedDropDownMenu
-        button.setOnClickListener { v ->
-            showMenu(v, R.menu.menu_main)
-        }
     }
 
     override fun onPostClicked(post: Explore) {
@@ -64,11 +60,5 @@ class FragmentSaved : Fragment(), DataEvent {
 
     override fun onBookMarkClicked(post: Explore) {
         TODO("Not yet implemented")
-    }
-
-    private fun showMenu(v : View, @MenuRes menuRes : Int) {
-        val popup = PopupMenu(view?.context, v)
-        popup.menuInflater.inflate(menuRes, popup.menu)
-        popup.show()
     }
 }
