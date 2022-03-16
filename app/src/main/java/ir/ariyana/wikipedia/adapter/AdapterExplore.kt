@@ -1,7 +1,6 @@
 package ir.ariyana.wikipedia.adapter
 
 import android.annotation.SuppressLint
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
@@ -31,6 +30,8 @@ class AdapterExplore(private val data: ArrayList<Explore>, val dataEvent: DataEv
             binding.explorePostBookmark.setOnClickListener {
                 dataEvent.onBookMarkClicked(data[adapterPosition])
             }
+
+            binding.explorePostBookmark.isChecked = data[position].isSaved
         }
     }
 

@@ -51,7 +51,7 @@
                 android:layout_gravity="start|center_vertical"
                 />
 
-            <ImageView
+            <CheckBox
                 android:id="@+id/explorePostBookmark"
                 android:layout_width="24dp"
                 android:layout_height="24dp"
@@ -60,6 +60,8 @@
                 android:clickable="true"
                 android:focusable="true"
                 android:src="@drawable/ic_baseline_bookmark_border_24"
+                android:button="@drawable/selector_bookmark_item"
+                app:useMaterialThemeColors="false"
                 app:tint="@color/black_200"
                 />
 
