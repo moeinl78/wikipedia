@@ -8,7 +8,7 @@ import kotlinx.parcelize.Parcelize
 @Parcelize
 @Entity(tableName="posts")
 data class Explore(
-    @PrimaryKey(autoGenerate = true) val id : Int,
+    @PrimaryKey(autoGenerate = true) val id : Int? = null,
     val postImage : String,
     val postTitle : String,
     val postSubtitle : String,

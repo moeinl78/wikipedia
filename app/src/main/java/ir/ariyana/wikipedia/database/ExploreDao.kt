@@ -18,5 +18,8 @@ interface BaseDao {
 interface ExploreDao : BaseDao {
 
     @Query("SELECT * FROM posts WHERE posts.postTitle LIKE '%'||:info||'%'")
-    fun searchPost(info : String) : List<Explore>
+    fun searchPosts(info : String) : List<Explore>
+
+    @Query("SELECT * FROM posts")
+    fun receivePosts() : List<Explore>
 }
