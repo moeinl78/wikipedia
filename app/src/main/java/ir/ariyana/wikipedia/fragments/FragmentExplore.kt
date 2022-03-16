@@ -9,12 +9,15 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.material.snackbar.Snackbar
 import ir.ariyana.wikipedia.MainSecondActivity
+import ir.ariyana.wikipedia.R
 import ir.ariyana.wikipedia.adapter.AdapterExplore
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.database.ExploreDao
 import ir.ariyana.wikipedia.database.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentExploreBinding
+import ir.ariyana.wikipedia.databinding.ItemCardViewBinding
 import ir.ariyana.wikipedia.interf.DataEvent
 
 const val POST_DATA = "post_data"
@@ -113,6 +116,25 @@ class FragmentExplore : Fragment(), DataEvent {
         val postDB = exploreDAO.receivePost(post.id!!)
         postDB.isSaved = !postDB.isSaved
         exploreDAO.updatePost(postDB)
+
+        if(postDB.isSaved) {
+            activity?.let {
+                Snackbar
+                    .make(it.findViewById(android.R.id.content), "You can find this post in saved section!", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(resources.getColor(R.color.blue))
+                    .setTextColor(resources.getColor(R.color.white))
+                    .show()
+            }
+        }
+        else {
+            activity?.let {
+                Snackbar
+                    .make(it.findViewById(android.R.id.content), "Post removed from the save section!", Snackbar.LENGTH_SHORT)
+                    .setBackgroundTint(resources.getColor(R.color.blue))
+                    .setTextColor(resources.getColor(R.color.white))
+                    .show()
+            }
+        }
 
         // restart dataset to show saved items
         val dataSet = ArrayList(exploreDAO.receivePosts())
