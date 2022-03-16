@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import ir.ariyana.wikipedia.adapter.AdapterSearch
 import ir.ariyana.wikipedia.data.Explore
 import ir.ariyana.wikipedia.database.ExploreDao
@@ -30,6 +32,8 @@ class FragmentSearch : Fragment() {
         exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
         val dataSet : ArrayList<Explore> = arrayListOf()
         adapter = AdapterSearch(dataSet)
+        binding.fragmentSearchRecyclerView.adapter = adapter
+        binding.fragmentSearchRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
 
         binding.fragmentSearchTextInput.editText?.addTextChangedListener { text ->
             if(text!!.isNotEmpty()) {
