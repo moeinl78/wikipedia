@@ -4,12 +4,19 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
+import ir.ariyana.wikipedia.adapter.AdapterSearch
+import ir.ariyana.wikipedia.data.Explore
+import ir.ariyana.wikipedia.database.ExploreDao
+import ir.ariyana.wikipedia.database.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentSearchBinding
 
 class FragmentSearch : Fragment() {
 
-    lateinit var binding : FragmentSearchBinding
+    private lateinit var binding : FragmentSearchBinding
+    private lateinit var exploreDAO : ExploreDao
+    private lateinit var adapter : AdapterSearch
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -20,6 +27,18 @@ class FragmentSearch : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
+        val dataSet : ArrayList<Explore> = arrayListOf()
+        adapter = AdapterSearch(dataSet)
+
+        binding.fragmentSearchTextInput.editText?.addTextChangedListener { text ->
+            if(text!!.isNotEmpty()) {
+                val data = ArrayList(exploreDAO.searchPosts(text.toString()))
+                adapter.setData(data)
+            }
+            else {
+                adapter.setData(dataSet)
+            }
+        }
     }
 }
