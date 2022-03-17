@@ -8,195 +8,333 @@
     android:orientation="vertical"
     >
 
-    <LinearLayout
-        android:id="@+id/profileInfo"
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        >
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/profileBackButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_gravity="start|center_vertical"
+            app:srcCompat="@drawable/ic_baseline_arrow_back_24"
+            app:backgroundTint="@android:color/transparent"
+            app:elevation="0dp"
+            app:rippleColor="@color/gray_white"
+            app:fabSize="mini"
+            app:borderWidth="0dp"
+            />
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/profileEditButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="8dp"
+            android:layout_gravity="end|center_vertical"
+            app:srcCompat="@drawable/ic_baseline_edit_24"
+            app:backgroundTint="@android:color/transparent"
+            app:rippleColor="@color/gray_white"
+            app:elevation="0dp"
+            app:fabSize="mini"
+            app:borderWidth="0dp"
+            />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="108dp"
         android:orientation="horizontal"
-        android:layout_margin="8dp"
+        android:gravity="center_vertical"
         >
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileCircularImage"
             android:layout_width="96dp"
             android:layout_height="96dp"
-            android:layout_gravity="start"
+            android:src="@drawable/img_pf"
             android:layout_marginStart="16dp"
-            android:src="@drawable/img_profile"
             />
 
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:layout_gravity="center"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:layout_marginBottom="8dp"
+            android:gravity="start"
+            android:layout_marginStart="32dp"
             >
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Edward Larry"
-                android:textSize="24sp"
-                android:textColor="@color/black_200"
-                android:layout_margin="4dp"
-                />
+                <TextView
+                    android:id="@+id/profileUserName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:text="Moein Latifi"
+                    android:textSize="28sp"
+                    android:textColor="@color/blue"
+                    android:textStyle="bold"
+                    />
 
             <TextView
+                android:id="@+id/profileUserSubject"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Junior Developer"
-                android:textSize="16sp"
-                android:textColor="@color/black_100"
-                android:layout_margin="4dp"
+                android:layout_marginTop="8dp"
+                android:text="WRITER"
+                android:textColor="@color/gray"
+                android:textSize="17sp"
+                android:textStyle="bold"
                 />
 
         </LinearLayout>
 
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="12dp"
+        >
+
         <ImageView
+            android:id="@+id/profileIconPhone"
+            android:layout_width="24dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_outline_local_phone_24"
+            android:layout_marginStart="16dp"
+            />
+
+        <TextView
+            android:id="@+id/profilePhoneNumber"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/ic_baseline_edit_24"
-            android:layout_gravity="center"
-            android:layout_marginStart="48dp"
-            android:clickable="true"
-            android:focusable="true"
-            android:checkable="true"
-            app:tint="@color/blue"
+            android:text="@string/phone_number"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:layout_marginStart="32dp"
             />
 
     </LinearLayout>
-    
+
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="256dp"
-        android:orientation="vertical"
-        android:layout_marginTop="16dp"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="8dp"
         >
+
+        <ImageView
+            android:id="@+id/profileIconEmail"
+            android:layout_width="24dp"
+            android:layout_height="32dp"
+            android:src="@drawable/ic_baseline_email_24"
+            android:layout_marginStart="16dp"
+            />
+
+        <TextView
+            android:id="@+id/profileEmailAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="moeinlatifi7117@gmail.com"
+            android:textStyle="bold"
+            android:textColor="@color/gray"
+            android:textSize="17sp"
+            android:layout_marginStart="32dp"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_favorite_border_24"
+            app:tint="@color/blue"
+            />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Dashboard"
-            android:textSize="24sp"
-            android:textColor="@color/gray_white"
-            android:layout_marginTop="8dp"
+            android:text="Your Favorites"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
             android:layout_marginStart="16dp"
+            android:clickable="true"
+            android:focusable="true"
             />
 
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="48dp"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            >
+            android:src="@drawable/ic_baseline_payment_24"
+            app:tint="@color/blue"
+            />
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_wallet"
-                android:layout_gravity="center_vertical"
-                app:tint="@color/blue"
-                />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Payments"
-                android:textSize="20sp"
-                android:textColor="@color/black_200"
-                android:layout_marginStart="96dp"
-                android:layout_gravity="center_vertical"
-                />
-
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="More"
-                android:textColor="@color/blue"
-                style="?attr/materialButtonStyle"
-                />
-
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:text="Payment"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            >
+            android:clickable="true"
+            android:focusable="true"
+            />
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_achievement"
-                android:layout_gravity="center_vertical"
-                app:tint="#D7FF5722"
-                />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Achievement"
-                android:textSize="20sp"
-                android:textColor="@color/black_200"
-                android:layout_marginStart="96dp"
-                android:layout_gravity="center_vertical"
-                />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        >
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="More"
-                android:textColor="@color/blue"
-                style="?attr/materialButtonStyle"
-                />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_people_outline_24"
+            app:tint="@color/blue"
+            />
 
-        </FrameLayout>
-
-        <FrameLayout
-            android:layout_width="match_parent"
+        <TextView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
+            android:text="Tell Your Friend"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
             android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            >
+            android:clickable="true"
+            android:focusable="true"
+            />
 
-            <ImageView
-                android:layout_width="32dp"
-                android:layout_height="32dp"
-                android:src="@drawable/ic_privacy"
-                android:layout_gravity="center_vertical"
-                app:tint="#66BB6A"
-                />
+    </LinearLayout>
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Privacy"
-                android:textSize="20sp"
-                android:textColor="@color/black_200"
-                android:layout_marginStart="96dp"
-                android:layout_gravity="center_vertical"
-                />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        >
 
-            <androidx.appcompat.widget.AppCompatButton
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:text="More"
-                android:textColor="@color/blue"
-                style="?attr/materialButtonStyle"
-                />
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_discount_24"
+            app:tint="@color/blue"
+            />
 
-        </FrameLayout>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Promotions"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:layout_marginStart="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_settings_24"
+            app:tint="@color/blue"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Settings"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/blue"
+            android:layout_marginStart="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_marginTop="16dp"
+        android:background="@color/gray"
+        android:alpha="0.5"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginTop="16dp"
+        >
+
+        <ImageView
+            android:layout_width="32dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="16dp"
+            android:src="@drawable/ic_baseline_power_settings_new_24"
+            app:tint="@color/black_200"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Your Favorites"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            android:textColor="@color/black_200"
+            android:layout_marginStart="16dp"
+            android:clickable="true"
+            android:focusable="true"
+            />
 
     </LinearLayout>
 
