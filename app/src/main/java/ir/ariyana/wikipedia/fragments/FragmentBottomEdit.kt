@@ -1,5 +1,6 @@
 package ir.ariyana.wikipedia.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,21 @@ class FragmentBottomEdit : BottomSheetDialogFragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+        val username = binding.profileBottomSheetName.editText?.text.toString()
+        val subject = binding.profileBottomSheetSubject.editText?.text.toString()
+        val phoneNumber = binding.profileBottomSheetPhone.editText?.text.toString()
+        val email = binding.profileBottomSheetEmail.editText?.text.toString()
+
+        binding.profileBottomSheetConfirm.setOnClickListener {
+
+            activity?.getSharedPreferences("profile", Context.MODE_PRIVATE)
+                ?.edit()
+                ?.putString("username", username)
+                ?.putString("subject", subject)
+                ?.putString("phoneNumber", phoneNumber)
+                ?.putString("email", email)
+                ?.apply()
+        }
     }
 }

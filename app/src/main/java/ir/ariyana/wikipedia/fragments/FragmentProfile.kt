@@ -1,6 +1,8 @@
 package ir.ariyana.wikipedia.fragments
 
+import android.content.Context
 import android.os.Bundle
+import android.view.ContextMenu
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -27,5 +29,12 @@ class FragmentProfile : Fragment() {
                 .addToBackStack(null)
                 .commit()
         }
+
+        val sharedPreferences = activity?.getSharedPreferences("profile", Context.MODE_PRIVATE)
+        binding.profileUserName.text = sharedPreferences?.getString("username", "Moein Latifi")
+        binding.profileUserSubject.text = sharedPreferences?.getString("subject", "WRITER")
+        binding.profilePhoneNumber.text = sharedPreferences?.getString("phoneNumber", "09912066410")
+        binding.profileEmailAddress.text = sharedPreferences?.getString("email", "moeinlatifi7117@gmail.com")
+
     }
 }
