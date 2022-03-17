@@ -2,7 +2,6 @@ package ir.ariyana.wikipedia
 
 import android.content.Intent
 import android.net.Uri
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -12,9 +11,10 @@ import androidx.fragment.app.Fragment
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.android.material.snackbar.Snackbar
 import ir.ariyana.wikipedia.databinding.ActivityMainBinding
+import ir.ariyana.wikipedia.extenstion.BasicActivity
 import ir.ariyana.wikipedia.fragments.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BasicActivity() {
 
     lateinit var binding : ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
