@@ -22,12 +22,12 @@ class FragmentBottomEdit : BottomSheetDialogFragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
-        val username = binding.profileBottomSheetName.editText?.text.toString()
-        val subject = binding.profileBottomSheetSubject.editText?.text.toString()
-        val phoneNumber = binding.profileBottomSheetPhone.editText?.text.toString()
-        val email = binding.profileBottomSheetEmail.editText?.text.toString()
-
         binding.profileBottomSheetConfirm.setOnClickListener {
+
+            val username = binding.profileBottomSheetName.editText?.text.toString()
+            val subject = binding.profileBottomSheetSubject.editText?.text.toString()
+            val phoneNumber = binding.profileBottomSheetPhone.editText?.text.toString()
+            val email = binding.profileBottomSheetEmail.editText?.text.toString()
 
             activity?.getSharedPreferences("profile", Context.MODE_PRIVATE)
                 ?.edit()
@@ -36,6 +36,8 @@ class FragmentBottomEdit : BottomSheetDialogFragment() {
                 ?.putString("phoneNumber", phoneNumber)
                 ?.putString("email", email)
                 ?.apply()
+            
+            dismiss()
         }
     }
 }
