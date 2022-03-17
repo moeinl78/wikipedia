@@ -23,4 +23,8 @@
     <string name="open_link">Open Link</string>
     <string name="search">Search</string>
     <string name="phone_number">09912066410</string>
+    <string name="enter_your_name">Enter your name</string>
+    <string name="enter_your_subject">Enter your subject</string>
+    <string name="enter_your_phone_number">Enter your phone number</string>
+    <string name="enter_your_email_address">Enter your email address</string>
 </resources>
