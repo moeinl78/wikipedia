@@ -20,6 +20,12 @@ class FragmentProfile : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+
+        binding.profileEditButton.setOnClickListener {
+            childFragmentManager.beginTransaction()
+                .add(FragmentBottomEdit(), null)
+                .addToBackStack(null)
+                .commit()
+        }
     }
 }
