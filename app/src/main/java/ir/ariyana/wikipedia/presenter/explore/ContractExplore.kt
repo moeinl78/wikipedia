@@ -1,9 +1,9 @@
-package ir.ariyana.wikipedia.presenter.main
+package ir.ariyana.wikipedia.presenter.explore
 
 import ir.ariyana.wikipedia.presenter.PresenterBase
 import ir.ariyana.wikipedia.presenter.ViewBasic
 
-interface ContractMain {
+interface ContractExplore {
 
     interface Presenter : PresenterBase {
 

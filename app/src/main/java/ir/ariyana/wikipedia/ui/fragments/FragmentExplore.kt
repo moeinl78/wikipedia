@@ -18,14 +18,18 @@ import ir.ariyana.wikipedia.model.local.ExploreDao
 import ir.ariyana.wikipedia.model.local.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentExploreBinding
 import ir.ariyana.wikipedia.model.interf.DataEvent
+import ir.ariyana.wikipedia.presenter.explore.ContractExplore
+import ir.ariyana.wikipedia.presenter.explore.PresenterExplore
 
 const val POST_DATA = "post_data"
 
-class FragmentExplore : Fragment(), DataEvent {
+class FragmentExplore : Fragment(), DataEvent, ContractExplore.View {
 
     private lateinit var binding : FragmentExploreBinding
     private lateinit var exploreDAO : ExploreDao
     private lateinit var adapter : AdapterExplore
+    private lateinit var presenterExplore : PresenterExplore
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,6 +42,9 @@ class FragmentExplore : Fragment(), DataEvent {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
 
+        presenterExplore = PresenterExplore(binding.root.context)
+        presenterExplore.onAttach(this)
+
         val sharedPreferences = this.activity?.getSharedPreferences("app", Context.MODE_PRIVATE)
         if (sharedPreferences != null) {
             if (sharedPreferences.getBoolean("app_first_run", true)){
@@ -49,6 +56,11 @@ class FragmentExplore : Fragment(), DataEvent {
             }
         }
         receiveDBItems()
+    }
+
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenterExplore.onDetach()
     }
 
     private fun appFirstRun() {
@@ -138,5 +150,9 @@ class FragmentExplore : Fragment(), DataEvent {
         // restart dataset to show saved items
         val dataSet = ArrayList(exploreDAO.receivePosts())
         adapter.setData(dataSet)
+    }
+
+    override fun receivePosts(posts: List<Explore>) {
+
     }
 }
