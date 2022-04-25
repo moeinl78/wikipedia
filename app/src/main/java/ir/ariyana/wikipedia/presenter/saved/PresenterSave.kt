@@ -3,7 +3,9 @@ package ir.ariyana.wikipedia.presenter.saved
 import android.content.Context
 import android.util.Log
 import io.reactivex.FlowableSubscriber
+import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import ir.ariyana.wikipedia.model.data.Explore
 import ir.ariyana.wikipedia.model.local.ExploreDao
@@ -15,6 +17,7 @@ class PresenterSave(private val context : Context) : ContractSave.Presenter {
 
     private var viewLayer : ViewBasic? = null
     private lateinit var exploreDao : ExploreDao
+    private lateinit var disposable : Disposable
 
     override fun onAttach(view: ViewBasic) {
 
@@ -33,13 +36,14 @@ class PresenterSave(private val context : Context) : ContractSave.Presenter {
             .receivePosts()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : FlowableSubscriber<List<Explore>> {
+            .subscribe(object : SingleObserver<List<Explore>> {
 
-                override fun onSubscribe(s: Subscription) {
-
+                override fun onSubscribe(d: Disposable) {
+                    disposable = d
                 }
 
-                override fun onNext(t: List<Explore>) {
+                override fun onSuccess(t: List<Explore>) {
+
                     val saved = arrayListOf<Explore>()
 
                     t.forEach {
@@ -50,12 +54,8 @@ class PresenterSave(private val context : Context) : ContractSave.Presenter {
                     viewLayer!!.receivePosts(saved)
                 }
 
-                override fun onError(t: Throwable) {
-                    Log.e("error", t.message!!)
-                }
+                override fun onError(e: Throwable) {
 
-                override fun onComplete() {
-                    Log.i("onComplete", "completed")
                 }
             })
 

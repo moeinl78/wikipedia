@@ -20,6 +20,8 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
     private var viewLayer : ViewBasic? = null
     private lateinit var exploreDao : ExploreDao
     private lateinit var disposable : Disposable
+    private lateinit var disposableBook : Disposable
+    private lateinit var disposableRestart : Disposable
 
     override fun onAttach(view: ViewBasic) {
 
@@ -40,29 +42,23 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
             .receivePost(post.id!!)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : FlowableSubscriber<Explore> {
+            .subscribe(object : SingleObserver<Explore> {
 
-                override fun onSubscribe(s: Subscription) {
-
+                override fun onSubscribe(d: Disposable) {
+                    disposableBook = d
                 }
 
-                override fun onNext(t: Explore) {
+                override fun onSuccess(t: Explore) {
+                    Log.i("data", t.toString())
                     t.isSaved = !t.isSaved
                     exploreDao.updatePost(t)
+                    restartData()
                 }
 
-                override fun onError(t: Throwable) {
-                    Log.e("error", t.message!!)
-                }
+                override fun onError(e: Throwable) {
 
-                override fun onComplete() {
-                    Log.i("onComplete", "completed")
                 }
             })
-
-        // restart dataset to show saved items
-//        val dataSet = exploreDao.receivePosts()
-//        viewLayer!!.receiveNewData(dataSet)
     }
 
     override fun onAppFirstRun() {
@@ -116,22 +112,40 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
             .receivePosts()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : FlowableSubscriber<List<Explore>> {
-
-                override fun onSubscribe(s: Subscription) {
-
+            .subscribe(object : SingleObserver<List<Explore>> {
+                override fun onSubscribe(d: Disposable) {
+                    disposable = d
                 }
 
-                override fun onNext(t: List<Explore>) {
+                override fun onSuccess(t: List<Explore>) {
+                    Log.v("explore", t.toString())
                     viewLayer!!.receivePosts(t)
                 }
 
-                override fun onError(t: Throwable) {
-                    Log.e("error", t.message!!)
+                override fun onError(e: Throwable) {
+
+                }
+            })
+    }
+
+    private fun restartData() {
+        exploreDao
+            .receivePosts()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : SingleObserver<List<Explore>> {
+
+                override fun onSubscribe(d: Disposable) {
+                    disposableRestart = d
                 }
 
-                override fun onComplete() {
-                    Log.i("onComplete", "completed")
+                override fun onSuccess(t: List<Explore>) {
+                    Log.i("data", t.toString())
+                    viewLayer!!.receiveNewData(t)
+                }
+
+                override fun onError(e: Throwable) {
+
                 }
             })
     }
