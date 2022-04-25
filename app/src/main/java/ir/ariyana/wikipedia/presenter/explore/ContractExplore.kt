@@ -6,7 +6,7 @@ import ir.ariyana.wikipedia.presenter.ViewBasic
 interface ContractExplore {
 
     interface Presenter : PresenterBase {
-
+        fun onAppFirstRun()
     }
 
     interface View : ViewBasic {
