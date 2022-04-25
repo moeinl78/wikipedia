@@ -15,11 +15,14 @@ import ir.ariyana.wikipedia.model.local.ExploreDao
 import ir.ariyana.wikipedia.model.local.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentSavedBinding
 import ir.ariyana.wikipedia.model.interf.DataEvent
+import ir.ariyana.wikipedia.presenter.saved.ContractSave
+import ir.ariyana.wikipedia.presenter.saved.PresenterSave
 
-class FragmentSaved : Fragment(), DataEvent {
+class FragmentSaved : Fragment(), DataEvent, ContractSave.View {
 
-    lateinit var binding : FragmentSavedBinding
-    lateinit var exploreDAO : ExploreDao
+    private lateinit var binding : FragmentSavedBinding
+    private lateinit var presenterSave : PresenterSave
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,20 +33,14 @@ class FragmentSaved : Fragment(), DataEvent {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
 
-        val data = ArrayList(exploreDAO.receivePosts())
-        val dataSet : ArrayList<Explore> = arrayListOf()
+        presenterSave = PresenterSave(binding.root.context)
+        presenterSave.onAttach(this)
+    }
 
-        data.map { item ->
-            if(item.isSaved) {
-                dataSet.add(item)
-            }
-        }
-
-        val adapter = AdapterSave(dataSet, this)
-        binding.saveFragmentRecyclerView.adapter = adapter
-        binding.saveFragmentRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenterSave.onDetach()
     }
 
     override fun onPostClicked(post: Explore) {
@@ -54,6 +51,17 @@ class FragmentSaved : Fragment(), DataEvent {
     }
 
     override fun onBookMarkClicked(post: Explore) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun receivePosts(posts: List<Explore>) {
+
+        val adapter = AdapterSave(ArrayList(posts), this)
+        binding.saveFragmentRecyclerView.adapter = adapter
+        binding.saveFragmentRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+    }
+
+    override fun receiveNewData(posts: List<Explore>) {
+
     }
 }
