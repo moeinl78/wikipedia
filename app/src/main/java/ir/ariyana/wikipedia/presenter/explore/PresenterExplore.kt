@@ -23,12 +23,16 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
         viewLayer = null
     }
 
-    override fun onItemClicked(context: Context, post: Explore) {
-
-    }
-
     override fun onBookmarkClicked(post: Explore) {
 
+        // receive right item from database
+        val postDB = exploreDao.receivePost(post.id!!)
+        postDB.isSaved = !postDB.isSaved
+        exploreDao.updatePost(postDB)
+
+        // restart dataset to show saved items
+        val dataSet = exploreDao.receivePosts()
+        viewLayer!!.receiveNewData(dataSet)
     }
 
     override fun onAppFirstRun() {
@@ -77,6 +81,7 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
     }
 
     private fun sendItems() {
+
         val posts = exploreDao.receivePosts()
         viewLayer!!.receivePosts(posts)
     }
