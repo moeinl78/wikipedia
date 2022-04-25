@@ -15,11 +15,15 @@ import ir.ariyana.wikipedia.model.local.ExploreDao
 import ir.ariyana.wikipedia.model.local.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentTrendBinding
 import ir.ariyana.wikipedia.model.interf.DataEvent
+import ir.ariyana.wikipedia.presenter.trend.ContractTrend
+import ir.ariyana.wikipedia.presenter.trend.PresenterTrend
 
-class FragmentTrend : Fragment(), DataEvent {
+class FragmentTrend : Fragment(), DataEvent, ContractTrend.View {
 
     private lateinit var binding : FragmentTrendBinding
     private lateinit var exploreDAO : ExploreDao
+    private lateinit var presenterTrend : PresenterTrend
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -30,6 +34,10 @@ class FragmentTrend : Fragment(), DataEvent {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+
+        presenterTrend = PresenterTrend(binding.root.context)
+        presenterTrend.onAttach(this)
+
         exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
 
         val data = ArrayList(exploreDAO.receivePosts())
@@ -53,6 +61,18 @@ class FragmentTrend : Fragment(), DataEvent {
     }
 
     override fun onBookMarkClicked(post: Explore) {
+        //
+    }
+
+    override fun receiveSearchResult(posts: List<Explore>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun receivePosts(posts: List<Explore>) {
+        TODO("Not yet implemented")
+    }
+
+    override fun receiveNewData(posts: List<Explore>) {
         TODO("Not yet implemented")
     }
 }
