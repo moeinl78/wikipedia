@@ -12,16 +12,17 @@ import androidx.recyclerview.widget.RecyclerView
 import ir.ariyana.wikipedia.ui.MainSecondActivity
 import ir.ariyana.wikipedia.ui.adapter.AdapterSearch
 import ir.ariyana.wikipedia.model.data.Explore
-import ir.ariyana.wikipedia.model.local.ExploreDao
-import ir.ariyana.wikipedia.model.local.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentSearchBinding
 import ir.ariyana.wikipedia.model.interf.DataEvent
+import ir.ariyana.wikipedia.presenter.search.ContractSearch
+import ir.ariyana.wikipedia.presenter.search.PresenterSearch
 
-class FragmentSearch : Fragment(), DataEvent {
+class FragmentSearch : Fragment(), DataEvent, ContractSearch.View {
 
     private lateinit var binding : FragmentSearchBinding
-    private lateinit var exploreDAO : ExploreDao
     private lateinit var adapter : AdapterSearch
+    private lateinit var presenterSearch : PresenterSearch
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -32,20 +33,11 @@ class FragmentSearch : Fragment(), DataEvent {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
-        val dataSet : ArrayList<Explore> = arrayListOf()
-        adapter = AdapterSearch(dataSet, this)
-        binding.fragmentSearchRecyclerView.adapter = adapter
-        binding.fragmentSearchRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+        presenterSearch = PresenterSearch(binding.root.context)
+        presenterSearch.onAttach(this)
 
         binding.fragmentSearchTextInput.editText?.addTextChangedListener { text ->
-            if(text!!.isNotEmpty()) {
-                val data = ArrayList(exploreDAO.searchPosts(text.toString()))
-                adapter.setData(data)
-            }
-            else {
-                adapter.setData(dataSet)
-            }
+            presenterSearch.onSearchItems(text.toString())
         }
     }
 
@@ -56,6 +48,17 @@ class FragmentSearch : Fragment(), DataEvent {
     }
 
     override fun onBookMarkClicked(post: Explore) {
-        TODO("Not yet implemented")
+
+    }
+
+    override fun receivePosts(posts: List<Explore>) {
+
+        adapter = AdapterSearch(ArrayList(posts), this)
+        binding.fragmentSearchRecyclerView.adapter = adapter
+        binding.fragmentSearchRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+    }
+
+    override fun receiveNewData(posts: List<Explore>) {
+
     }
 }
