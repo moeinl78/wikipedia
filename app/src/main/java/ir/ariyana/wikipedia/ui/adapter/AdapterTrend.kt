@@ -1,14 +1,13 @@
-package ir.ariyana.wikipedia.adapter
+package ir.ariyana.wikipedia.ui.adapter
 
 import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import ir.ariyana.wikipedia.data.Explore
+import ir.ariyana.wikipedia.model.data.Explore
 import ir.ariyana.wikipedia.databinding.ItemCardTrendViewBinding
-import ir.ariyana.wikipedia.databinding.ItemCardViewBinding
-import ir.ariyana.wikipedia.interf.DataEvent
+import ir.ariyana.wikipedia.model.interf.DataEvent
 
 class AdapterTrend(private val data : ArrayList<Explore>, val dataEvent: DataEvent) : RecyclerView.Adapter<AdapterTrend.ViewHolder>() {
 

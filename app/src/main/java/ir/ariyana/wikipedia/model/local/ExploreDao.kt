@@ -1,7 +1,7 @@
-package ir.ariyana.wikipedia.database
+package ir.ariyana.wikipedia.model.local
 
 import androidx.room.*
-import ir.ariyana.wikipedia.data.Explore
+import ir.ariyana.wikipedia.model.data.Explore
 
 interface BaseDao {
     @Insert

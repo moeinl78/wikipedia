@@ -1,4 +1,4 @@
-package ir.ariyana.wikipedia.fragments
+package ir.ariyana.wikipedia.ui.fragments
 
 import android.content.Context
 import android.content.Intent
@@ -10,15 +10,14 @@ import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.snackbar.Snackbar
-import ir.ariyana.wikipedia.MainSecondActivity
+import ir.ariyana.wikipedia.ui.MainSecondActivity
 import ir.ariyana.wikipedia.R
-import ir.ariyana.wikipedia.adapter.AdapterExplore
-import ir.ariyana.wikipedia.data.Explore
-import ir.ariyana.wikipedia.database.ExploreDao
-import ir.ariyana.wikipedia.database.WikiDB
+import ir.ariyana.wikipedia.ui.adapter.AdapterExplore
+import ir.ariyana.wikipedia.model.data.Explore
+import ir.ariyana.wikipedia.model.local.ExploreDao
+import ir.ariyana.wikipedia.model.local.WikiDB
 import ir.ariyana.wikipedia.databinding.FragmentExploreBinding
-import ir.ariyana.wikipedia.databinding.ItemCardViewBinding
-import ir.ariyana.wikipedia.interf.DataEvent
+import ir.ariyana.wikipedia.model.interf.DataEvent
 
 const val POST_DATA = "post_data"
 

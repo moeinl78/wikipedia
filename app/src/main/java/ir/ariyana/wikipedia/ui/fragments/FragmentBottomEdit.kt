@@ -1,4 +1,4 @@
-package ir.ariyana.wikipedia.fragments
+package ir.ariyana.wikipedia.ui.fragments
 
 import android.content.Context
 import android.os.Bundle
@@ -36,7 +36,7 @@ class FragmentBottomEdit : BottomSheetDialogFragment() {
                 ?.putString("phoneNumber", phoneNumber)
                 ?.putString("email", email)
                 ?.apply()
-            
+
             dismiss()
         }
     }

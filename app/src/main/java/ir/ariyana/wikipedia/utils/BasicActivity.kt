@@ -1,4 +1,4 @@
-package ir.ariyana.wikipedia.extenstion
+package ir.ariyana.wikipedia.utils
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity

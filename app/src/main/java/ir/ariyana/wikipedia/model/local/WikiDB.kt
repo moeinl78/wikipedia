@@ -1,10 +1,10 @@
-package ir.ariyana.wikipedia.database
+package ir.ariyana.wikipedia.model.local
 
 import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import ir.ariyana.wikipedia.data.Explore
+import ir.ariyana.wikipedia.model.data.Explore
 
 @Database(entities=[Explore::class], version = 1)
 abstract class WikiDB : RoomDatabase() {

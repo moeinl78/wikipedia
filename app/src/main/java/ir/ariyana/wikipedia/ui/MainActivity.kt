@@ -1,4 +1,4 @@
-package ir.ariyana.wikipedia
+package ir.ariyana.wikipedia.ui
 
 import android.content.Intent
 import android.net.Uri
@@ -10,9 +10,10 @@ import androidx.core.view.GravityCompat
 import androidx.fragment.app.Fragment
 import cn.pedant.SweetAlert.SweetAlertDialog
 import com.google.android.material.snackbar.Snackbar
+import ir.ariyana.wikipedia.R
 import ir.ariyana.wikipedia.databinding.ActivityMainBinding
-import ir.ariyana.wikipedia.extenstion.BasicActivity
-import ir.ariyana.wikipedia.fragments.*
+import ir.ariyana.wikipedia.utils.BasicActivity
+import ir.ariyana.wikipedia.ui.fragments.*
 
 class MainActivity : BasicActivity() {
 

@@ -1,4 +1,4 @@
-package ir.ariyana.wikipedia
+package ir.ariyana.wikipedia.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent
@@ -8,9 +8,9 @@ import android.os.Bundle
 import android.view.MenuItem
 import androidx.core.content.ContextCompat
 import com.bumptech.glide.Glide
-import ir.ariyana.wikipedia.data.Explore
+import ir.ariyana.wikipedia.model.data.Explore
 import ir.ariyana.wikipedia.databinding.ActivityMainSecondBinding
-import ir.ariyana.wikipedia.fragments.POST_DATA
+import ir.ariyana.wikipedia.ui.fragments.POST_DATA
 
 class MainSecondActivity : AppCompatActivity() {
 
