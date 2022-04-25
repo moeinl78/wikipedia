@@ -1,15 +1,25 @@
 package ir.ariyana.wikipedia.presenter.explore
 
 import android.content.Context
+import android.util.Log
+import io.reactivex.CompletableObserver
+import io.reactivex.FlowableSubscriber
+import io.reactivex.Single
+import io.reactivex.SingleObserver
+import io.reactivex.android.schedulers.AndroidSchedulers
+import io.reactivex.disposables.Disposable
+import io.reactivex.schedulers.Schedulers
 import ir.ariyana.wikipedia.model.data.Explore
 import ir.ariyana.wikipedia.model.local.ExploreDao
 import ir.ariyana.wikipedia.model.local.WikiDB
 import ir.ariyana.wikipedia.presenter.ViewBasic
+import org.reactivestreams.Subscription
 
 class PresenterExplore(private val context : Context) : ContractExplore.Presenter {
 
     private var viewLayer : ViewBasic? = null
-    private lateinit var exploreDao: ExploreDao
+    private lateinit var exploreDao : ExploreDao
+    private lateinit var disposable : Disposable
 
     override fun onAttach(view: ViewBasic) {
 
@@ -26,13 +36,33 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
     override fun onBookmarkClicked(post: Explore) {
 
         // receive right item from database
-        val postDB = exploreDao.receivePost(post.id!!)
-        postDB.isSaved = !postDB.isSaved
-        exploreDao.updatePost(postDB)
+        val postDB = exploreDao
+            .receivePost(post.id!!)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : FlowableSubscriber<Explore> {
+
+                override fun onSubscribe(s: Subscription) {
+
+                }
+
+                override fun onNext(t: Explore) {
+                    t.isSaved = !t.isSaved
+                    exploreDao.updatePost(t)
+                }
+
+                override fun onError(t: Throwable) {
+                    Log.e("error", t.message!!)
+                }
+
+                override fun onComplete() {
+                    Log.i("onComplete", "completed")
+                }
+            })
 
         // restart dataset to show saved items
-        val dataSet = exploreDao.receivePosts()
-        viewLayer!!.receiveNewData(dataSet)
+//        val dataSet = exploreDao.receivePosts()
+//        viewLayer!!.receiveNewData(dataSet)
     }
 
     override fun onAppFirstRun() {
@@ -82,7 +112,27 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
 
     private fun sendItems() {
 
-        val posts = exploreDao.receivePosts()
-        viewLayer!!.receivePosts(posts)
+        val posts = exploreDao
+            .receivePosts()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(object : FlowableSubscriber<List<Explore>> {
+
+                override fun onSubscribe(s: Subscription) {
+
+                }
+
+                override fun onNext(t: List<Explore>) {
+                    viewLayer!!.receivePosts(t)
+                }
+
+                override fun onError(t: Throwable) {
+                    Log.e("error", t.message!!)
+                }
+
+                override fun onComplete() {
+                    Log.i("onComplete", "completed")
+                }
+            })
     }
 }
