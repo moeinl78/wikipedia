@@ -36,7 +36,7 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
     override fun onBookmarkClicked(post: Explore) {
 
         // receive right item from database
-        val postDB = exploreDao
+        exploreDao
             .receivePost(post.id!!)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -112,7 +112,7 @@ class PresenterExplore(private val context : Context) : ContractExplore.Presente
 
     private fun sendItems() {
 
-        val posts = exploreDao
+        exploreDao
             .receivePosts()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
