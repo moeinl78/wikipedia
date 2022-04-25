@@ -7,11 +7,10 @@ import ir.ariyana.wikipedia.presenter.ViewBasic
 interface ContractTrend {
 
     interface Presenter : PresenterBasic {
-        fun onSearchItem(query : String)
+
     }
 
     interface View : ViewBasic {
 
-        fun receiveSearchResult(posts : List<Explore>)
     }
 }

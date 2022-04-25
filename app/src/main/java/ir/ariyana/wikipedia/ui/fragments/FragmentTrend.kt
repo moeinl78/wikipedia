@@ -21,7 +21,6 @@ import ir.ariyana.wikipedia.presenter.trend.PresenterTrend
 class FragmentTrend : Fragment(), DataEvent, ContractTrend.View {
 
     private lateinit var binding : FragmentTrendBinding
-    private lateinit var exploreDAO : ExploreDao
     private lateinit var presenterTrend : PresenterTrend
 
     override fun onCreateView(
@@ -37,21 +36,11 @@ class FragmentTrend : Fragment(), DataEvent, ContractTrend.View {
 
         presenterTrend = PresenterTrend(binding.root.context)
         presenterTrend.onAttach(this)
+    }
 
-        exploreDAO = WikiDB.createDatabase(binding.root.context).exploreDao
-
-        val data = ArrayList(exploreDAO.receivePosts())
-        val dataSet : ArrayList<Explore> = arrayListOf()
-
-        data.map{ item ->
-            if(item.isTrend) {
-                dataSet.add(item)
-            }
-        }
-        // send dataSet to show trend items in recycler view
-        val adapter = AdapterTrend(dataSet, this)
-        binding.fragmentTrendRecyclerView.adapter = adapter
-        binding.fragmentTrendRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
+    override fun onDestroyView() {
+        super.onDestroyView()
+        presenterTrend.onDetach()
     }
 
     override fun onPostClicked(post: Explore) {
@@ -61,18 +50,17 @@ class FragmentTrend : Fragment(), DataEvent, ContractTrend.View {
     }
 
     override fun onBookMarkClicked(post: Explore) {
-        //
-    }
 
-    override fun receiveSearchResult(posts: List<Explore>) {
-        TODO("Not yet implemented")
     }
 
     override fun receivePosts(posts: List<Explore>) {
-        TODO("Not yet implemented")
+
+        val adapter = AdapterTrend(ArrayList(posts), this)
+        binding.fragmentTrendRecyclerView.adapter = adapter
+        binding.fragmentTrendRecyclerView.layoutManager = LinearLayoutManager(parentFragment?.context, RecyclerView.VERTICAL, false)
     }
 
     override fun receiveNewData(posts: List<Explore>) {
-        TODO("Not yet implemented")
+
     }
 }
